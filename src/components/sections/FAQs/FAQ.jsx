@@ -6,6 +6,7 @@ export default function FAQ({ question, activeQuestion, handleQuestionClick }) {
 
   return (
     <motion.li
+      id="faq"
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },

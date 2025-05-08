@@ -20,6 +20,7 @@ export default function FAQs() {
 
   return (
     <motion.section
+      id="faq"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.2 }}

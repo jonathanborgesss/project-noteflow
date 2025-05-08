@@ -18,7 +18,7 @@ const navigationLinks = [
   {
     id: 1,
     link: "Início",
-    href: "#",
+    href: "inicio",
   },
   {
     id: 2,
@@ -356,19 +356,13 @@ function hidePreloader() {
   const root = document.getElementById('root');
   
   if (preloader && root) {
-    // 1. Adiciona fade-out no preloader
     preloader.classList.add('opacity-0', 'pointer-events-none');
     
-    // 2. Mostra o conteúdo principal
     root.classList.remove('hidden');
     
-    // 3. Remove completamente o preloader após a animação
     setTimeout(() => {
       preloader.style.display = 'none';
-      
-      // REMOVI o window.scrollTo(0, 0) que causava o problema
-      
-      // Dispara eventuais animações da página
+
       if (typeof initPageAnimations === 'function') {
         initPageAnimations();
       }
@@ -376,7 +370,6 @@ function hidePreloader() {
   }
 }
 
-// Restante do código mantido igual...
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(hidePreloader, 2500);
 });
@@ -387,7 +380,6 @@ window.addEventListener('load', () => {
 
 setTimeout(hidePreloader, 5000);
 
-// Botão voltar ao topo
 const scrollTop = document.querySelector('.scroll-top');
 
 window.addEventListener('scroll', () => {

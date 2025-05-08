@@ -14,7 +14,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="bg-gradient-to-top">
+    <section id="testemunhas" className="bg-gradient-to-top">
       <motion.div
         initial={{ opacity: 0 }}
         animate={isReady ? { opacity: 1 } : {}}

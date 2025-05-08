@@ -10,7 +10,7 @@ export default function Hero() {
 
   return (
     <motion.div
-      id="hero"
+      id="inicio"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.2 }}
