@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/Logo.svg" />
+    <link rel="preload" href="path/to/HeroGraphic.webp" as="image" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta
+      name="description"
+      content="NoteFlow is an AI-powered note-taking app that helps you capture, organize,
+      and summarize your notes effortlessly. Boost your productivity with smart, intuitive
+      features designed for students, professionals, and anyone looking to stay organized."
+    />
+    <title>NoteFlow</title>
+  </head>
+  <body>
+    <div id="preloader" class="fixed inset-0 z-[999999] flex items-center justify-center bg-primary-1500 transition-opacity duration-500 ease-out">
+      <div class="relative h-16 w-16">
+        <div class="absolute inset-0 border-6 border-primary-500 border-t-transparent border-b-transparent rounded-full animate-spin"></div>
+      </div>
+    </div>
+    <a href="#" class="scroll-top" aria-label="Voltar ao topo">
+      <i class='bx bx-chevron-up'></i>
+    </a>
+    <div id="root">
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
