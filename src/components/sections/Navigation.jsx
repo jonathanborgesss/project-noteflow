@@ -45,7 +45,7 @@ export default function Navigation() {
             {navigationLinks.map((link) => (
               <li key={link.id}>
                 <a
-                  href=""
+                  href="\"
                   onClick={(e) => {
                     navigate(`/#${link.href}`);
                     e.preventDefault();

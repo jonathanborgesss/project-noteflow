@@ -68,8 +68,9 @@ function MobileMenu() {
             {navigationLinks.map((link) => (
               <li key={link.id}>
                 <a
-                  href={`#${link.href}`}
+                  href="\"
                   onClick={(e) => {
+                    navigate(`/#${link.href}`);
                     e.preventDefault();
                     if (window.location.pathname === "/") {
                       const element = document.getElementById(link.href);
