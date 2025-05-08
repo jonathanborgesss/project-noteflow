@@ -56,7 +56,7 @@ const SignInSignUp = ({ onBackClick }) => {
                     </div>
                     <div className="group">
                       <input
-                        type="number"
+                        type="phone"
                         placeholder="Telefone"
                         className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-300 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                       />
