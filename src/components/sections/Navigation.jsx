@@ -50,12 +50,10 @@ export default function Navigation() {
                     navigate(`/#${link.href}`);
                     e.preventDefault();
                     if (window.location.pathname === "/") {
-                      // Se já está na home, faz scroll
                       const element = document.getElementById(link.href);
                       if (element)
                         element.scrollIntoView({ behavior: "smooth" });
                     } else {
-                      // Se não está na home, redireciona para home + scroll
                       navigate("/", { state: { scrollTo: link.href } });
                     }
                   }}
