@@ -3,10 +3,11 @@ import HeroGraphic from "../../assets/graphics/HeroGraphic.webp";
 import { useModalContext } from "../../contexts/ModalContext";
 import ArrowRight from "../icons/ArrowRight";
 import ArrowRightLine from "../icons/ArrowRightLine";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
-  
   const { setActiveModal } = useModalContext();
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -15,7 +16,7 @@ export default function Hero() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
-      className="mx-auto grid max-w-[90rem] lg:pt-0 pt-[84px] grid-cols-[5fr_4fr] items-center gap-x-18 px-24 py-32 max-xl:grid-cols-2 max-xl:gap-x-12 max-xl:px-16 max-xl:py-24 max-lg:px-8 max-lg:py-20 max-md:grid-cols-1 max-md:grid-rows-[auto_auto] max-md:gap-y-12 max-md:px-6 max-md:pt-[96px] max-md:pb-12"
+      className="mx-auto grid max-w-[90rem] grid-cols-[5fr_4fr] items-center gap-x-18 px-24 py-32 pt-[84px] max-xl:grid-cols-2 max-xl:gap-x-12 max-xl:px-16 max-xl:py-24 max-lg:px-8 max-lg:py-20 max-md:grid-cols-1 max-md:grid-rows-[auto_auto] max-md:gap-y-12 max-md:px-6 max-md:pt-[96px] max-md:pb-12 lg:pt-0"
     >
       <motion.div
         initial={{ opacity: 0, x: -40 }}
@@ -31,7 +32,7 @@ export default function Hero() {
         >
           Notas com IA. Organize e resuma em segundos
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,15 +42,12 @@ export default function Hero() {
           Deixe a IA organizar e resumir suas notas, <br />
           poupando seu tempo e aumentando sua produtividade
         </motion.p>
-        
+
         <motion.button
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
+          onClick={() => navigate("/login", { replace: true })}
           className="text-primary-1300 bg-primary-500 border-primary-500 hover:border-primary-50 hover:bg-primary-50 transition-properties primary-glow-hover primary-glow group flex cursor-pointer items-center gap-x-3 rounded-full border-2 px-8 py-3.5 max-xl:gap-x-2 max-xl:px-6 max-xl:py-3"
-          onClick={() => setActiveModal("sign-up")}
         >
-          <p className="text-lg/8 max-xl:text-base/loose">Começar agora</p>
+          Começar agora
           <div className="w-5 max-xl:w-4 max-sm:hidden">
             <ArrowRightLine
               alt="Seta para direita"
@@ -65,7 +63,7 @@ export default function Hero() {
         </motion.button>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="relative"
         initial={{ opacity: 0, x: 40 }}
         whileInView={{ opacity: 1, x: 0 }}
