@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Logo from "../icons/Logo";
 
 const SignInSignUp = ({ onBackClick }) => {
@@ -6,17 +7,17 @@ const SignInSignUp = ({ onBackClick }) => {
 
   return (
     <div className="bg-primary-1500 w-full py-12">
-      {/* Container principal */}
+      {}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Container do formulário */}
+        {}
         <div className="relative">
-          {/* Efeitos de fundo */}
+          {}
           <div className="from-primary-500/50 animate-pulse-slow animation-delay-2000 absolute -top-20 -left-20 h-72 w-72 rounded-full bg-radial to-transparent opacity-70 blur-3xl"></div>
           <div className="from-primary-500/50 animate-pulse-slow animation-delay-2000 absolute -right-20 -bottom-20 h-72 w-72 rounded-full bg-radial to-transparent opacity-70 blur-3xl"></div>
 
-          {/* Card do formulário */}
+          {}
           <div className="bg-primary-1300/40 border-primary-1400/50 animate-fade-in @container relative top-10 mx-auto w-full max-w-md rounded-2xl border p-8 shadow-lg backdrop-blur-xl">
-            {/* Botão de voltar dentro do card (NOVO) */}
+            {}
             {onBackClick && (
               <button
                 onClick={onBackClick}
@@ -51,14 +52,14 @@ const SignInSignUp = ({ onBackClick }) => {
                       <input
                         type="text"
                         placeholder="Nome"
-                        className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-300 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
+                        className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-700 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                       />
                     </div>
                     <div className="group">
                       <input
                         type="phone"
                         placeholder="Telefone"
-                        className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-300 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
+                        className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-700 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                       />
                     </div>
                   </>
@@ -68,7 +69,7 @@ const SignInSignUp = ({ onBackClick }) => {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-300 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
+                    className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-700 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                   />
                 </div>
 
@@ -76,7 +77,7 @@ const SignInSignUp = ({ onBackClick }) => {
                   <input
                     type="password"
                     placeholder="Senha"
-                    className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-300 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
+                    className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-700 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                   />
                 </div>
 

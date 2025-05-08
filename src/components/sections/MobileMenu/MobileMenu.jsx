@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // Importar o hook de navegação, se estiver usando React Router
+import { useNavigate } from "react-router-dom";
 import Close from "../../icons/Close";
 import { navigationLinks } from "../../../utils/content";
 import { useModalContext } from "../../../contexts/ModalContext";
 import { useMobileMenuContext } from "../../../contexts/MobileMenuContext";
 
 function MobileMenu() {
-  const navigate = useNavigate(); // Inicializar o hook de navegação
+  const navigate = useNavigate();
   const { setActiveModal } = useModalContext();
   const { mobileMenuOpened, setMobileMenuOpened } = useMobileMenuContext();
 
   function handleGetStarted() {
     setActiveModal("sign-up");
     setMobileMenuOpened(false);
-    navigate("/get-started"); // Redirecionar para a página "Começar"
+    navigate("/get-started");
   }
 
   function handleLogin() {
     setMobileMenuOpened(false);
-    navigate("/login"); // Redirecionar para a página de "Login"
+    navigate("/login");
   }
 
   return (
@@ -65,15 +65,23 @@ function MobileMenu() {
             />
           </button>
           <ul className="mt-8 flex flex-col gap-y-6">
-            {" "}
-            {}
             {navigationLinks.map((link) => (
               <li key={link.id}>
                 <a
-                  href={link.href}
-                  target={link.target || "_self"}
-                  rel={link.rel || "noopener noreferrer"}
-                  className="text-primary-50 hover:text-primary-500 transition-properties text-lg/8"
+                  href={`#${link.href}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (window.location.pathname === "/") {
+                      // Se já está na home, faz scroll
+                      const element = document.getElementById(link.href);
+                      if (element)
+                        element.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      // Se não está na home, redireciona para home + scroll
+                      navigate("/", { state: { scrollTo: link.href } });
+                    }
+                  }}
+                  className="hover:text-primary-500 transition-colors"
                 >
                   {link.link}
                 </a>

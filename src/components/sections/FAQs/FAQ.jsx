@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"; // CORREÇÃO: Import correto
+import { motion } from "framer-motion";
 import CaretUp from "../../icons/CaretUp";
 
 export default function FAQ({ question, activeQuestion, handleQuestionClick }) {
@@ -6,7 +6,6 @@ export default function FAQ({ question, activeQuestion, handleQuestionClick }) {
 
   return (
     <motion.li
-      id="faq"
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
