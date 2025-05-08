@@ -65,15 +65,9 @@ export default function Navigation() {
         <div className="flex items-center gap-x-3 max-lg:hidden">
           <button
             onClick={() => navigate("/login")} // Redireciona para a página de login
-            className="border-primary-50 hover:bg-primary-50 hover:text-primary-1300 cursor-pointer rounded-full border-2 px-6 py-2 text-base transition-colors"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => navigate("/login")} // Redireciona para a página de login
             className="bg-primary-500 border-primary-500 text-primary-1300 primary-glow hover:bg-primary-50 cursor-pointer rounded-full border-2 px-6 py-2 text-base transition-colors"
           >
-            Começar
+            Iniciar
           </button>
         </div>
 

@@ -84,15 +84,9 @@ function MobileMenu() {
         <div className="flex flex-col gap-y-3 pt-4">
           <button
             onClick={handleLogin}
-            className="border-primary-50 transition-properties text-primary-50 hover:bg-primary-50 hover:text-primary-1300 box-border cursor-pointer rounded-full border-2 px-6 py-3 text-base/loose font-normal"
-          >
-            Login
-          </button>
-          <button
-            onClick={handleGetStarted}
             className="bg-primary-500 border-primary-500 text-primary-1300 primary-glow hover:border-primary-50 hover:bg-primary-50 primary-glow-hover transition-properties cursor-pointer rounded-full border-2 px-6 py-3 text-base/loose font-normal"
           >
-            Começar
+            Iniciar
           </button>
         </div>
       </motion.div>
