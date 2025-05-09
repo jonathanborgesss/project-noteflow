@@ -41,7 +41,7 @@ const reviews = [
   {
     id: 1,
     src: new URL("../assets/headshots/cris.png", import.meta.url),
-    alt: "Rachel Foster",
+    alt: "Cristiano Borges",
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ const reviews = [
   },
   {
     id: 5,
-    src: new URL("../assets/headshots/img-15.webp", import.meta.url),
+    src: new URL("../assets/headshots/img-7.webp", import.meta.url),
     alt: "Lucas King",
   },
 ];
@@ -177,7 +177,7 @@ const testimonials = [
     muito mais suave. Os lembretes contextuais me ajudaram a ficar por dentro dos prazos críticos.",
     src: new URL("../assets/headshots/img-9.webp", import.meta.url),
     name: "Sarah Lee",
-    title: "Business Analyst",
+    title: "Analista de Negócios",
   },
   {
     id: 4,
@@ -187,7 +187,7 @@ const testimonials = [
     o NoteFlow faz o trabalho pesado, categorizando tudo automaticamente.",
     src: new URL("../assets/headshots/img-4.webp", import.meta.url),
     name: "Jonathan Moore",
-    title: "Software Engineer",
+    title: "Engenheiro de Software",
   },
   {
     id: 5,
@@ -195,10 +195,10 @@ const testimonials = [
     description:
       "O NoteFlow facilitou muito o gerenciamento de vários projetos. Posso acessar e organizar rapidamente minhas anotações, \
     e os lembretes contextuais me mantêm no caminho certo. É a melhor ferramenta que encontrei para me manter organizado.",
-    src: new URL("../assets/headshots/img-15.webp", import.meta.url),
+    src: new URL("../assets/headshots/img-7.webp", import.meta.url),
 
     name: "Rachel Foster",
-    title: "Project Manager",
+    title: "Gerente de Projetos",
   },
   {
     id: 6,
@@ -209,7 +209,7 @@ const testimonials = [
 
     src: new URL("../assets/headshots/savio.png", import.meta.url),
     name: "Sávio Pereira",
-    title: "Desenvolvedor back-end",
+    title: "Desenvolvedor Back-End",
   },
   {
     id: 7,
@@ -219,7 +219,7 @@ const testimonials = [
     ideias de conteúdo organizadas e pesquisáveis, economizando horas todas as semanas. Altamente recomendado!",
     src: new URL("../assets/headshots/img-1.webp", import.meta.url),
     name: "Olivia Carter",
-    title: "Content Strategist",
+    title: "Estrategista de Conteúdo",
   },
   {
     id: 8,
@@ -239,7 +239,7 @@ const testimonials = [
     com base em minhas anotações, tornou meu processo de acompanhamento, sendo um divisor de águas!",
     src: new URL("../assets/headshots/img-8.webp", import.meta.url),
     name: "Jessica Gonzalez",
-    title: "Sales Executive",
+    title: "Executiva de Vendas",
   },
   {
     id: 10,
@@ -249,7 +249,7 @@ const testimonials = [
     simplificou meus processos de trabalho.",
     src: new URL("../assets/headshots/img-13.webp", import.meta.url),
     name: "Aaron Mitchell",
-    title: "Customer Support",
+    title: "Gerente de T.I",
   },
   {
     id: 11,
@@ -269,7 +269,7 @@ const testimonials = [
     enquanto estou fora de casa.",
     src: new URL("../assets/headshots/img-14.webp", import.meta.url),
     name: "Ben Turner",
-    title: "Freelance Writer",
+    title: "Escritor freelancer",
   },
   {
     id: 13,
@@ -279,7 +279,7 @@ const testimonials = [
     por garantir que eu acompanhe as principais tarefas e prazos.",
     src: new URL("../assets/headshots/img-12.webp", import.meta.url),
     name: "Katherine Evans",
-    title: "Marketing Director",
+    title: "Diretora de Marketing",
   },
   {
     id: 14,
@@ -299,7 +299,7 @@ const testimonials = [
     no meu processo criativo. Quer eu esteja fazendo um brainstorming ou fazendo anotações de projetos.",
     src: new URL("../assets/headshots/img-2.webp", import.meta.url),
     name: "Natalie James",
-    title: "Graphic Designer",
+    title: "Designer Gráfico",
   },
 ];
 
