@@ -60,13 +60,14 @@ const SignInSignUp = ({ onBackClick }) => {
               </p>
 
               {}
-              <form className="perspective-1000 mt-8 space-y-5">
+              <form className="perspective-1000 mt-8 space-y-5" action = "/app/Controller/ControllerUser.php" method="POST">
                 {isSignUp && (
                   <>
                     <div className="group">
                       <input
                         type="text"
                         placeholder="Nome"
+                        name="name"
                         className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-700 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                       />
                     </div>
@@ -76,6 +77,7 @@ const SignInSignUp = ({ onBackClick }) => {
                 <div className="group">
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-700 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                   />
@@ -84,6 +86,7 @@ const SignInSignUp = ({ onBackClick }) => {
                 <div className="group">
                   <input
                     type="password"
+                    name="password"
                     placeholder="Senha"
                     className="bg-primary-100 border-primary-1400/50 text-primary-1500 placeholder-primary-700 focus:ring-primary-500/50 w-full rounded-xl border p-4 transition-all outline-none focus:border-transparent focus:ring-2"
                   />
@@ -91,6 +94,8 @@ const SignInSignUp = ({ onBackClick }) => {
 
                 <button
                   type="submit"
+                  name = {isSignUp ? "signin" : "signup"}
+                  value = {isSignUp ? "signin" : "signup"}
                   className="cursor-pointer group from-primary-500 to-primary-600 text-primary-1300 hover:shadow-primary-500/40 w-full transform overflow-hidden rounded-xl bg-gradient-to-r p-4 font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02]"
                 >
                   <span className="relative z-10">

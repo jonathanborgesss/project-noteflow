@@ -1,0 +1,18 @@
+{
+    "name": "noteflow/project",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/",
+            "app\\Model\\": "app/",
+            "app\\Controller\\": "app/",
+            "app\\DAO\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "João Gabriel Vasques Ribeiro",
+            "email": "joaogabrielvasques16@gmail.com"
+        }
+    ],
+    "require": {}
+}
