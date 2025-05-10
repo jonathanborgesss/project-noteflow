@@ -66,6 +66,7 @@
 }
 
 .fixed-nav {
+  top: auto;
   will-change: transform, backdrop-filter;
   transform: translateZ(0);
 }
@@ -79,10 +80,11 @@
 }
 
 html, body {
+  
   background-color: var(--color-primary-1500);
   overflow-x: initial !important;
   transform: none !important;
-  --nav-height: 84px;
+  --nav-height: 54px;
 }
 
 body {

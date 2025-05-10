@@ -12,7 +12,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 10); // Ativa "grudar" após 10px de scroll
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -21,23 +21,27 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-[3] transition-all duration-300 ${
+      className={`fixed left-0 w-full z-[3] transition-all duration-300 ${
         isScrolled
-          ? "bg-primary-1500/95 h-[76px] py-4 shadow-lg backdrop-blur-sm"
-          : "bg-primary-1500/80 h-[84px] py-6"
+          ? "top-0 bg-primary-1500/95 h-[76px] py-4 shadow-lg backdrop-blur-sm"
+          : "top-3 bg-primary-1500/80 h-[84px] py-6"
       }`}
     >
       <nav className="text-primary-50 m-auto flex max-w-[90rem] items-center justify-between px-24 text-lg/8 font-light max-xl:px-16 max-xl:text-base/loose max-lg:px-8 max-md:px-6">
-        {/* Logo e nome */}
+        {/* Logo + Nome (clicável para home) */}
         <div 
           className="flex cursor-pointer items-center gap-x-3"
           onClick={() => navigate("/")}
         >
-          <Logo className="stroke-primary-500 h-6 max-md:h-5" alt="Ícone do NoteFlow" width={5} />
+          <Logo 
+            className="stroke-primary-500 h-6 max-md:h-5" 
+            alt="Ícone do NoteFlow" 
+            width={5} 
+          />
           <p className="text-xl font-bold tracking-tight">NoteFlow</p>
         </div>
 
-        {/* Links de navegação */}
+        {/* Links centrais (desktop) */}
         <div className="absolute left-1/2 -translate-x-1/2 transform max-lg:hidden">
           <ul className="flex items-center gap-x-8">
             {navigationLinks.map((link) => (
@@ -59,7 +63,7 @@ export default function Navigation() {
           </ul>
         </div>
 
-        {/* Botão de ação */}
+        {/* Botão "Iniciar" (desktop) */}
         <div className="flex items-center gap-x-3 max-lg:hidden">
           <button
             onClick={() => navigate("/login")}
@@ -69,6 +73,7 @@ export default function Navigation() {
           </button>
         </div>
 
+        {/* Menu Mobile (ícone) */}
         <MobileMenuIcon />
       </nav>
     </header>

@@ -35,7 +35,7 @@ function MobileMenu() {
         },
       }}
       transition={{ duration: 0.25 }}
-      className="bg-primary-1300/50 fixed top-0 right-0 bottom-0 left-0 z-50 flex justify-end px-6 py-6 pl-28 backdrop-blur-sm"
+      className="fixed top-[var(--nav-height)] right-0 bottom-0 left-0 z-[60] flex justify-end px-6 py-6 pl-28 backdrop-blur-sm bg-primary-1300/50"
     >
       <motion.div
         animate={mobileMenuOpened ? "visible" : "hidden"}
@@ -70,14 +70,14 @@ function MobileMenu() {
                 <a
                   href="\"
                   onClick={(e) => {
-                    navigate(`/#${link.href}`);
                     e.preventDefault();
-                    if (window.location.pathname === "/") {
-                      const element = document.getElementById(link.href);
-                      if (element)
+                    setMobileMenuOpened(false);
+                    navigate(`/#${link.href}`);
+                    const element = document.getElementById(link.href);
+                    if (element) {
+                      setTimeout(() => {
                         element.scrollIntoView({ behavior: "smooth" });
-                    } else {
-                      navigate("/", { state: { scrollTo: link.href } });
+                      }, 100);
                     }
                   }}
                   className="text-primary-50 hover:text-primary-500 transition-colors"
