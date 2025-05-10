@@ -21,41 +21,34 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-[3] transition-all duration-300 ${
         isScrolled
-          ? "bg-primary-1500/95 h-[76px] py-4 shadow-lg backdrop-blur-md"
+          ? "bg-primary-1500/95 h-[76px] py-4 shadow-lg backdrop-blur-sm"
           : "bg-primary-1500/80 h-[84px] py-6"
       }`}
     >
       <nav className="text-primary-50 m-auto flex max-w-[90rem] items-center justify-between px-24 text-lg/8 font-light max-xl:px-16 max-xl:text-base/loose max-lg:px-8 max-md:px-6">
-        <a
+        {/* Logo e nome */}
+        <div 
           className="flex cursor-pointer items-center gap-x-3"
           onClick={() => navigate("/")}
         >
-          <Logo
-            className="stroke-primary-500 h-6 max-md:h-5"
-            alt="Ícone do NoteFlow"
-            width={5}
-          />
+          <Logo className="stroke-primary-500 h-6 max-md:h-5" alt="Ícone do NoteFlow" width={5} />
           <p className="text-xl font-bold tracking-tight">NoteFlow</p>
-        </a>
+        </div>
 
+        {/* Links de navegação */}
         <div className="absolute left-1/2 -translate-x-1/2 transform max-lg:hidden">
           <ul className="flex items-center gap-x-8">
             {navigationLinks.map((link) => (
               <li key={link.id}>
                 <a
-                  href="\"
+                  href={`#${link.href}`}
                   onClick={(e) => {
-                    navigate(`/#${link.href}`);
                     e.preventDefault();
-                    if (window.location.pathname === "/") {
-                      const element = document.getElementById(link.href);
-                      if (element)
-                        element.scrollIntoView({ behavior: "smooth" });
-                    } else {
-                      navigate("/", { state: { scrollTo: link.href } });
-                    }
+                    navigate(`/#${link.href}`);
+                    const element = document.getElementById(link.href);
+                    if (element) element.scrollIntoView({ behavior: "smooth" });
                   }}
                   className="hover:text-primary-500 transition-colors"
                 >
@@ -66,6 +59,7 @@ export default function Navigation() {
           </ul>
         </div>
 
+        {/* Botão de ação */}
         <div className="flex items-center gap-x-3 max-lg:hidden">
           <button
             onClick={() => navigate("/login")}

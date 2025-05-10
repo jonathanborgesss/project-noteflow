@@ -80,10 +80,13 @@
 
 html, body {
   background-color: var(--color-primary-1500);
+  overflow-x: initial !important;
+  transform: none !important;
   --nav-height: 84px;
 }
 
 body {
+  padding: 0;
   margin: 0;
 }
 
