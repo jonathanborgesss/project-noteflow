@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",  // Para suporte a JSX
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]  // Aliases para imports (opcional)
+    }
+  },
+  "include": ["src/**/*"],  // Pasta a ser compilada
+  "exclude": ["node_modules"]
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Logo from "../icons/Logo";
+import { useNavigate } from "react-router-dom";
 
 const SignInSignUp = ({ onBackClick }) => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -14,7 +14,6 @@ const SignInSignUp = ({ onBackClick }) => {
         <div className="relative">
           {}
           <div className="from-primary-500/50 animate-pulse-slow animation-delay-2000 absolute -top-20 -left-20 h-72 w-72 rounded-full bg-radial to-transparent opacity-70 blur-3xl"></div>
-          <div className="from-primary-500/50 animate-pulse-slow animation-delay-2000 absolute -right-20 -bottom-20 h-72 w-72 rounded-full bg-radial to-transparent opacity-70 blur-3xl"></div>
 
           {}
           <div className="bg-primary-1300/40 border-primary-1400/50 animate-fade-in @container relative top-10 mx-auto w-full max-w-md rounded-2xl border p-8 shadow-lg backdrop-blur-xl">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "../icons/Logo";
 import MobileMenuIcon from "./MobileMenu/MobileMenuIcon";
 import { navigationLinks } from "../../utils/content";
@@ -9,16 +9,42 @@ export default function Navigation() {
   const { setActiveModal } = useModalContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10); // Ativa "grudar" após 10px de scroll
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Verifica se está na página de login
+  const isLoginPage = location.pathname === "/login";
+
+  // Se for a página de login, mostra apenas a logo
+  if (isLoginPage) {
+    return (
+      <header className="fixed left-0 top-3 z-[3] w-full bg-primary-1500/80 h-[84px] py-6">
+        <nav className="text-primary-50 m-auto flex max-w-[90rem] items-center px-24 max-xl:px-16 max-lg:px-8 max-md:px-6">
+          <div 
+            className="flex cursor-pointer items-center gap-x-3"
+            onClick={() => navigate("/")}
+          >
+            <Logo 
+              className="stroke-primary-500 h-6 max-md:h-5" 
+              alt="Ícone do NoteFlow" 
+              width={5} 
+            />
+            <p className="text-xl font-bold tracking-tight">NoteFlow</p>
+          </div>
+        </nav>
+      </header>
+    );
+  }
+
+  // Navbar completa para outras páginas
   return (
     <header
       className={`fixed left-0 w-full z-[3] transition-all duration-300 ${
@@ -28,7 +54,7 @@ export default function Navigation() {
       }`}
     >
       <nav className="text-primary-50 m-auto flex max-w-[90rem] items-center justify-between px-24 text-lg/8 font-light max-xl:px-16 max-xl:text-base/loose max-lg:px-8 max-md:px-6">
-        {/* Logo + Nome (clicável para home) */}
+        {/* Logo */}
         <div 
           className="flex cursor-pointer items-center gap-x-3"
           onClick={() => navigate("/")}
@@ -41,7 +67,7 @@ export default function Navigation() {
           <p className="text-xl font-bold tracking-tight">NoteFlow</p>
         </div>
 
-        {/* Links centrais (desktop) */}
+        {/* Links de navegação */}
         <div className="absolute left-1/2 -translate-x-1/2 transform max-lg:hidden">
           <ul className="flex items-center gap-x-8">
             {navigationLinks.map((link) => (
@@ -63,7 +89,7 @@ export default function Navigation() {
           </ul>
         </div>
 
-        {/* Botão "Iniciar" (desktop) */}
+        {/* Botão de login */}
         <div className="flex items-center gap-x-3 max-lg:hidden">
           <button
             onClick={() => navigate("/login")}
@@ -73,7 +99,7 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Menu Mobile (ícone) */}
+        {/* Ícone do menu mobile */}
         <MobileMenuIcon />
       </nav>
     </header>

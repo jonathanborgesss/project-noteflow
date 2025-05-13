@@ -1,18 +1,7 @@
-import ArrowSwap from "../components/icons/ArrowSwap";
-import CardSlash from "../components/icons/CardSlash";
 import Cloud from "../components/icons/Cloud";
-import DollarCircle from "../components/icons/DollarCircle";
-import Import from "../components/icons/Import";
-import Integrate from "../components/icons/Integrate";
 import MagicPen from "../components/icons/MagicPen";
-import Microphone from "../components/icons/Microphone";
 import Note from "../components/icons/Note";
-import Organization from "../components/icons/Organization";
-import Search from "../components/icons/Search";
-import Slack from "../components/icons/Slack";
-import SMSNotification from "../components/icons/SMSNotification";
 import TwoUsers from "../components/icons/TwoUsers";
-import Lock from "../components/icons/Lock";
 
 const navigationLinks = [
   {
