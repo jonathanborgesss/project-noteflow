@@ -66,13 +66,13 @@ INSERT INTO `images` VALUES (1,'img-11.webp','webp',999);
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `idUser` int NOT NULL AUTO_INCREMENT,
   `fkImage` int NOT NULL,
   `fkAccess` tinyint NOT NULL,
@@ -88,13 +88,13 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,1,1,'example','test@example.com','$2y$04$zdgT9NVnVm4mgKfIpwxnj.A76ircu1iw/gHEUL9Mh11oWhI.XVNN6');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,1,1,'example','test@example.com','$2y$04$zdgT9NVnVm4mgKfIpwxnj.A76ircu1iw/gHEUL9Mh11oWhI.XVNN6');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-15 10:41:05
+-- Dump completed on 2025-05-15 12:28:52
