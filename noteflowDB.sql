@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `access`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `access` (
-  `idAccess` tinyint NOT NULL,
+  `idAccess` tinyint NOT NULL AUTO_INCREMENT,
   `accessName` varchar(20) NOT NULL,
   PRIMARY KEY (`idAccess`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `access` (
 
 LOCK TABLES `access` WRITE;
 /*!40000 ALTER TABLE `access` DISABLE KEYS */;
+INSERT INTO `access` VALUES (1,'User'),(2,'Admin');
 /*!40000 ALTER TABLE `access` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,10 +49,10 @@ DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `idImage` int NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
-  `type` char(3) NOT NULL,
+  `type` char(4) NOT NULL,
   `size` int NOT NULL,
   PRIMARY KEY (`idImage`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,6 +61,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (1,'img-11.webp','webp',999);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,7 +73,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `idUser` int NOT NULL,
+  `idUser` int NOT NULL AUTO_INCREMENT,
   `fkImage` int NOT NULL,
   `fkAccess` tinyint NOT NULL,
   `name` varchar(128) NOT NULL,
@@ -82,7 +84,7 @@ CREATE TABLE `user` (
   KEY `fk_user_images1_idx` (`fkImage`),
   CONSTRAINT `fk_user_access` FOREIGN KEY (`fkAccess`) REFERENCES `access` (`idAccess`),
   CONSTRAINT `fk_user_images1` FOREIGN KEY (`fkImage`) REFERENCES `images` (`idImage`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,6 +93,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,1,1,'example','test@example.com','$2y$04$zdgT9NVnVm4mgKfIpwxnj.A76ircu1iw/gHEUL9Mh11oWhI.XVNN6');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -103,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-10 18:43:33
+-- Dump completed on 2025-05-15 10:41:05
