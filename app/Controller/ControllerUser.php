@@ -1,6 +1,5 @@
 <?php
 namespace app\Controller;
-header('Content-Type: application/json');
 
 use app\DAO\ConnectDB;
 use app\DAO\ImageDAO;
@@ -45,9 +44,9 @@ class ControllerUser
 
                $userdao->insertUser($user);
                $session->setSession($user);
-               return true;
+
           }
-          return false;
+
      }
      public function SignUp($email, $password)
      {
@@ -58,16 +57,16 @@ class ControllerUser
           $user = $userdao->getUserByEmail($email);
           if (!$user) {
                setcookie("NoEmail", $email, time() + 60 * 60, "/");
-               return false;
+
           } else {
                if ($passwordDao->matchPassword($password, $user->getPassword())) {
                     $session->setSession($user);
+
                } else {
                     setcookie("WrongPassword", $password, time() + 60 * 60, "/");
-                    return false;
+
                }
           }
-          return true;
      }
      public function Update($pkUser, $fkAccess, $name, $email, $password)
      {
@@ -120,21 +119,20 @@ class ControllerUser
 $controllerUser = new ControllerUser();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-     $data = json_decode(file_get_contents('php://input'), true);
-     $mode = $data['mode'] ?? null;
-     $name = $data['name'] ?? null;
-     $email = $data['email'] ?? null;
-     $password = $data['password'] ?? null;
-     $mode = $data['mode'] ?? null;
+     $mode = $_POST['mode'] ?? null;
+     $name = $_POST['name'] ?? null;
+     $email = $_POST['email'] ?? null;
+     $password = $_POST['password'] ?? null;
+     $mode = $_POST['mode'] ?? null;
      switch ($mode) {
           case "signin":
-               $response = $controllerUser->SignIn($data['name'], $data['email'], $data['password']);
-               echo json_encode(["redirect" => "/", "response" => $response]);
+               $controllerUser->SignIn($_POST['name'], $_POST['email'], $_POST['password']);
+              
                break;
 
           case "signup":
-               $response = $controllerUser->SignUp($data['email'], $data['password']);
-               echo json_encode(["redirect" => "/", "response" => $response]);
+               $controllerUser->SignUp($_POST['email'], $_POST['password']);
+              
                break;
           case "update":
                $pkUser = $d['pkUser'];
@@ -143,11 +141,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                $password = isset($d['password']) ? $d['password'] : null;
                $fkAccess = isset($d['access']) ? $d['access'] : null;
                $controllerUser->Update($pkUser, $fkAccess, $name, $email, $password);
-               echo json_encode(["redirect" => "/"]);
+              
                break;
 
           default:
-               echo json_encode(["redirect" => false, "error" => "Invalid mode"]);
+               
      }
 }
 

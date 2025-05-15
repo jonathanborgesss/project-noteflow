@@ -17,8 +17,6 @@ class UserDAO
                $sql->bindValue(":fkImage", $user->getFkImage() ?: 1);
                return $sql->execute();
           } catch (Exception $e) {
-               echo "<hr>";
-               echo $e;
                DAOManager::resetAutoIncrement("user");
           }
      }
@@ -31,8 +29,6 @@ class UserDAO
                $select->execute();
                return $select->fetch();
           } catch (Exception $e) {
-                       echo "<hr>";
-               echo $e;
           }
      }
      public function getUserByEmail($em)
@@ -44,8 +40,6 @@ class UserDAO
                $sql->execute();
                return $sql->fetch();
           } catch (Exception $e) {
-                       echo "<hr>";
-               echo $e;
           }
      }
      public function updateUser(User $user){
@@ -61,8 +55,6 @@ class UserDAO
 
                return $sql->execute();
           } catch (Exception $e) {
-                       echo "<hr>";
-               echo $e;
               
           }
      }
