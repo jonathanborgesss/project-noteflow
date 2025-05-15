@@ -29,7 +29,6 @@ class ImageDAO{
               return $select->fetch();
 
          } catch (Exception $e) {
-              print ("" . $e . "");
          }
     }
     public function deleteImageById($pk){
@@ -41,7 +40,6 @@ class ImageDAO{
                DAOManager::resetAutoIncrement("images");
           }
      } catch (Exception $e){
-          print ("" . $e . "");
      }
     }
 }

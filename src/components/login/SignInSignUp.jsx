@@ -68,16 +68,19 @@ const SignInSignUp = ({ onBackClick }) => {
                     password: e.target.password?.value,
                     mode: e.target.formmode?.value
                   };
-
-                  fetch('/api/app/Controller/ControllerUser.php', {
+                  fetch("http://localhost:8000/api/" + formData.mode, {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify({
+                      name: e.target.name?.value,
+                      email: e.target.email?.value,
+                      password: e.target.password?.value,
+                      mode: e.target.formmode?.value
+                    })
                   }).then(async (res) => {
                     const text = await res.text();
-                    console.log('RAW RESPONSE:', text); // See the actual server response
                     try {
                       const json = JSON.parse(text);
                       console.log(json);
@@ -93,7 +96,7 @@ const SignInSignUp = ({ onBackClick }) => {
 
 
                   })
-                    .catch(err => console.error('Fetch error:', err));
+
                 }}
               >
                 {isSignUp && (
@@ -188,7 +191,7 @@ const SignInSignUp = ({ onBackClick }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

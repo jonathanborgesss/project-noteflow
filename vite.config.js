@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost',  // Apache server
+        target: 'http://127.0.0.1:8000',  // Apache server
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '/project-noteflow'), // maps /api/test.php -> /project-noteflow/test.php
       }
