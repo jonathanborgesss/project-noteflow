@@ -2,7 +2,7 @@
 namespace app\DAO;
 
 use PDO;
-class ConnectDB extends PDO{
+class ConnectDB{
    
    public static $instance;
    private function __construct() {

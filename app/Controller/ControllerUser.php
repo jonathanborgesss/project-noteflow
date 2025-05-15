@@ -1,25 +1,26 @@
 <?php
-
 namespace app\Controller;
+header('Content-Type: application/json');
 
+use app\DAO\ConnectDB;
 use app\DAO\ImageDAO;
 use app\DAO\PasswordDAO;
 use app\Model\Image;
-use ConnectDB;
+use app\Src\Session;
+use SessionHandler;
 
 $server = $_SERVER['DOCUMENT_ROOT'];
 $autoloadFolder = getenv('folderName');
 require_once $server . $autoloadFolder;
 
 use app\Model\User;
-use app\Utility\Session as SessionManager;
 use app\DAO\UserDAO as UserDAO;
 use app\Model\Imagem;
 
 $user = new User();
 $userdao = new UserDAO();
 $passwordDao = new PasswordDAO();
-$session = new SessionManager();
+$session = new SessionHandler();
 
 $d = filter_input_array(INPUT_POST);
 
@@ -31,7 +32,7 @@ class ControllerUser
           $user = new User();
           $userdao = new UserDAO();
           $passwordDao = new PasswordDAO();
-          $session = new SessionManager();
+          $session = new Session();
           $user->setName($name);
           $user->setEmail($emailD);
           $hashedPassword = $passwordDao->hashPassword($password);
@@ -39,38 +40,34 @@ class ControllerUser
           $user->setAccess($access);
           $email = $user->getEmail();
           $query = "SELECT email FROM User where email = '$email'";
-          $select = ConnectDB::getConexao()->query($query);
-          if ($select->rowCount()) {
-               header('Location: ' . "/");
-               exit();
-          }
+          $select = ConnectDB::getConnection()->query($query);
+          if (!$select->rowCount()) {
 
-          $userdao->insertUser($user);
-          $session->setSession($user);
+               $userdao->insertUser($user);
+               $session->setSession($user);
+               return true;
+          }
+          return false;
      }
      public function SignUp($email, $password)
      {
           $user = new User();
           $userdao = new UserDAO();
           $passwordDao = new PasswordDAO();
-          $session = new SessionManager();
+          $session = new Session();
           $user = $userdao->getUserByEmail($email);
           if (!$user) {
                setcookie("NoEmail", $email, time() + 60 * 60, "/");
-               header('Location: ' . '/');
-               exit();
+               return false;
           } else {
                if ($passwordDao->matchPassword($password, $user->getPassword())) {
                     $session->setSession($user);
-                    header('Location: ' . "/");
-
-                    exit();
                } else {
                     setcookie("WrongPassword", $password, time() + 60 * 60, "/");
-                    header('Location: ' . '/');
-                    exit();
+                    return false;
                }
           }
+          return true;
      }
      public function Update($pkUser, $fkAccess, $name, $email, $password)
      {
@@ -101,9 +98,8 @@ class ControllerUser
                     $imagem->setType($tipo);
 
                     $imagemDao->insertImagem($imagem);
-                    $imagemModel = $imagemDao->getImageById(ConnectDB::getConexao()->lastInsertId());
+                    $imagemModel = $imagemDao->getImageById(ConnectDB::getConnection()->lastInsertId());
                     $User->setFkImage($imagemModel);
-                    print_r($imagemModel);
 
                     $target_dir = __DIR__ . '/../../assets/img/perfis/';
                     $target_file = $target_dir . basename($filename);
@@ -117,10 +113,6 @@ class ControllerUser
                $User->setFkImage($imagemModel);
           }
           $UserDao->updateUser($User);
-          echo"<hr>";
-          print_r($User);
-          echo "<hr>";
-          print_r($UserDao->getUserById($User->getId()));
      }
 }
 
@@ -128,29 +120,35 @@ class ControllerUser
 $controllerUser = new ControllerUser();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-     if (isset($_POST['signin'])) {
-          $controllerUser->SignIn($d['name'], $d['email'], $d['password']);
-          header('Location: ' . "/");
-          exit();
-     }
-     if(isset($_POST['update'])){
-          $pkUser = $d['pkUser'];
-          $name = isset($d['name']) ? $d['name'] : null;
-          $email = isset($d['email']) ? $d['email'] : null;
-          $password = isset($d['password']) ? $d['password'] : null;
-          $fkAccess = isset($d['access']) ? $d['access'] : null;
-          $controllerUser->Update($pkUser, $fkAccess, $name,$email,$password);
-          header('Location: ' . "/");
-          exit();
-     }
+     $data = json_decode(file_get_contents('php://input'), true);
+     $mode = $data['mode'] ?? null;
+     $name = $data['name'] ?? null;
+     $email = $data['email'] ?? null;
+     $password = $data['password'] ?? null;
+     $mode = $data['mode'] ?? null;
+     switch ($mode) {
+          case "signin":
+               $response = $controllerUser->SignIn($data['name'], $data['email'], $data['password']);
+               echo json_encode(["redirect" => "/", "response" => $response]);
+               break;
 
-     if (isset($_POST['signup'])) {
-          $email = $d['email'];
-          $password = $d['password'];
+          case "signup":
+               $response = $controllerUser->SignUp($data['email'], $data['password']);
+               echo json_encode(["redirect" => "/", "response" => $response]);
+               break;
+          case "update":
+               $pkUser = $d['pkUser'];
+               $name = isset($d['name']) ? $d['name'] : null;
+               $email = isset($d['email']) ? $d['email'] : null;
+               $password = isset($d['password']) ? $d['password'] : null;
+               $fkAccess = isset($d['access']) ? $d['access'] : null;
+               $controllerUser->Update($pkUser, $fkAccess, $name, $email, $password);
+               echo json_encode(["redirect" => "/"]);
+               break;
 
-          $controllerUser->SignUp($email, $password);
-          header('Location: ' . "/");
-          exit();
+          default:
+               echo json_encode(["redirect" => false, "error" => "Invalid mode"]);
      }
-    
 }
+
+exit();

@@ -1,5 +1,6 @@
 {
   "name": "configured-project",
+  "proxy": "http://localhost:80",
   "private": true,
   "version": "0.0.0",
   "type": "module",

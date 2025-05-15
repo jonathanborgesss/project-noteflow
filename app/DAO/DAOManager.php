@@ -1,6 +1,6 @@
 <?php 
 namespace app\DAO;
-use ConnectDB;
+
 use Exception;
 class DAOManager{
     public static $table;
@@ -14,10 +14,9 @@ class DAOManager{
         }
         try{
             $query = "ALTER TABLE $table AUTO_INCREMENT = 0;";
-            $sql = ConnectDB::getConexao()->query($query);
+            $sql = ConnectDB::getConnection()->query($query);
             $sql->execute();
         } catch (Exception $e){
-            echo ("" . $e . "");
         }
         
     }

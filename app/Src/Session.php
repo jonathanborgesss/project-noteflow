@@ -40,25 +40,22 @@ namespace app\Src;
             $_SESSION['login'] = true;
             $_SESSION['name'] = $user->getName();
             $_SESSION['email'] = $user->getEmail();
-            $_SESSION['access'] = $user->getAccess();
+            $_SESSION['access'] = $user->getFkAccess();
         }
 
         public function checkUser($user){
             if(!isset($user)){
-                header("Location: /");
+               // header("Location: /");
             }
         }
     
         public function verifyInsideSession($required){
             if(!isset($_SESSION)){
-                echo "Sessão inválida";
                 die();
             }
             if((!isset($_SESSION['login'])) or $_SESSION['login'] != true ){
-                echo"USUÁRIO NÃO LOGADO";
                 die();
             } elseif(isset($_SESSION['access']) && $_SESSION['access'] < $required){
-                echo "Nível de permissão insuficiente";
                 die();
             }
         }

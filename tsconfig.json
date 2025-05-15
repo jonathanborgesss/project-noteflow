@@ -14,5 +14,5 @@
     }
   },
   "include": ["src/**/*"],  // Pasta a ser compilada
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "app"]
 }

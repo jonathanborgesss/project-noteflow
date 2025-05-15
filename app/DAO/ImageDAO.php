@@ -2,22 +2,20 @@
 namespace app\DAO;
 use app\Model\Image;
 use app\Model\Imagem;
-use ConnectDB;
 use Exception;
 use PDO;
 class ImageDAO{
     public function insertImagem(Image $imagem){
          try {
               $query = "INSERT INTO images(name,type,size) VALUES (:name,:type,:size)";
-              $sql = ConnectDB::getConexao()->prepare($query);
+              $sql = ConnectDB::getConnection()->prepare($query);
               $sql->bindValue(":name",$imagem->getName());
               $sql->bindValue(":type",$imagem->getType());
               $sql->bindValue(":size",$imagem->getSize());
               
               return $sql->execute();
          } catch (Exception $e){
-              print("Erro ao inserir imagem <hr>" . $e . "<hr>");
-              $sql = ConnectDB::getConexao()->prepare("ALTER TABLE images SET AUTO INCREMENT = 0;");
+              $sql = ConnectDB::getConnection()->prepare("ALTER TABLE images SET AUTO INCREMENT = 0;");
          }
     }
 
@@ -25,7 +23,7 @@ class ImageDAO{
     {
          try {
               $query = "SELECT * FROM images WHERE idImage = '$id'";
-              $select = ConnectDB::getConexao()->prepare($query);
+              $select = ConnectDB::getConnection()->prepare($query);
               $select->setFetchMode(PDO::FETCH_CLASS, 'app\Model\Image');
               $select->execute();
               return $select->fetch();
@@ -38,7 +36,7 @@ class ImageDAO{
      try {
           if($pk > 1){
                $query = "DELETE FROM images WHERE idImage = '$pk'";
-               $select = ConnectDB::getConexao()->prepare($query);
+               $select = ConnectDB::getConnection()->prepare($query);
                $select->execute();
                DAOManager::resetAutoIncrement("images");
           }
