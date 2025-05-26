@@ -1,13 +1,5 @@
 {
     "name": "noteflow/project",
-    "autoload": {
-        "psr-4": {
-            "app\\": "app/",
-            "app\\Model\\": "app/",
-            "app\\Controller\\": "app/",
-            "app\\DAO\\": "app/"
-        }
-    },
     "authors": [
         {
             "name": "Jonathan Renan Borges",
@@ -18,5 +10,7 @@
             "email": "joaogabrielvasques16@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "laravel/laravel": "^9.5"
+    }
 }

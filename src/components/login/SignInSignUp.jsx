@@ -14,6 +14,7 @@ const SignInSignUp = ({ onBackClick }) => {
         <div className="relative">
           { }
           <div className="from-primary-500/50 animate-pulse-slow animation-delay-2000 absolute -top-20 -left-20 h-72 w-72 rounded-full bg-radial to-transparent opacity-70 blur-3xl"></div>
+          <div className="from-primary-500/50 animate-pulse-slow animation-delay-2000 absolute -right-20 -bottom-20 h-72 w-72 rounded-full bg-radial to-transparent opacity-70 blur-3xl"></div>
 
           { }
           <div className="bg-primary-1300/40 border-primary-1400/50 animate-fade-in @container relative top-10 mx-auto w-full max-w-md rounded-2xl border p-8 shadow-lg backdrop-blur-xl">
@@ -68,7 +69,7 @@ const SignInSignUp = ({ onBackClick }) => {
                     password: e.target.password?.value,
                     mode: e.target.formmode?.value
                   };
-                  fetch("http://localhost:8000/api/" + formData.mode, {
+                  fetch("http://127.0.0.1:8000/api/" + formData.mode, {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json'

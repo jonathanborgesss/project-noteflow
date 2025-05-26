@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
     public function register(Request $request)
 {
